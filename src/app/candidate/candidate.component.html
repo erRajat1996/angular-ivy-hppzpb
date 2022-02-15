@@ -1,0 +1,61 @@
+<input type="checkbox" [(ngModel)]="selectedMale" (click)="filtergender('M')" />
+Male
+<input
+  type="checkbox"
+  [(ngModel)]="selectedFemale"
+  (click)="filtergender('F')"
+/>
+FeMale
+
+<input
+  type="text"
+  title="search"
+  [(ngModel)]="searchText"
+  (change)="searchByNameEmail()"
+/>
+<table>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Email</th>
+      <th>Gender</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let temp of displayData">
+      <td>{{ temp.id }}</td>
+      <td>{{ temp.first_name }}</td>
+      <td>{{ temp.last_name }}</td>
+      <td>{{ temp.email }}</td>
+      <td>{{ temp.gender }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+<div>Add new candidate</div>
+<div>
+  First Name<input [(ngModel)]="newCandidate.first_name" type="text" /> Last
+  Name<input [(ngModel)]="newCandidate.last_name" type="text" />
+</div>
+<div>Email <input [(ngModel)]="newCandidate.email" type="text" /></div>
+Gender
+<input
+  [(ngModel)]="newCandidategenderMale"
+  [value]="newCandidategenderMale"
+  type="checkbox"
+  (click)="changeGender('M')"
+/>
+Male
+<input
+  [checked]="newCandidategenderFemale"
+  [(ngModel)]="newCandidategenderFemale"
+  type="checkbox"
+  [value]="newCandidategenderFemale"
+  (click)="changeGender('F')"
+/>Female
+<div>
+  <button (click)="addCandidate()">Add</button>
+</div>
